@@ -55,8 +55,9 @@ export default {
     height:100%;
     background-image: url('@/assets/images/rect_decorate.png');
     background-repeat: no-repeat;
-    background-position: 10% 90%;
-    background-size: 98% auto;
+    background-position: 10% 85%;
+    background-size: 95% auto;
+    box-shadow: inset 0px 0.5px 1px 1px $shadow_color, 0px 2px 1px 1px $shadow_color;
     &.type_0{
       background-color:$main_color;
     }
