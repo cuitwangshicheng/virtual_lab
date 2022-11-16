@@ -84,7 +84,7 @@ export default {
           border-radius: 20px;
           height: 40px;
           line-height: 40px;
-          font-size:30px;
+          font-size:24px;
         }
       }
     }
