@@ -13,7 +13,7 @@ create-time:2022-11-15
         <el-input v-model="userPwd" placeholder="请输入密码"></el-input>
       </el-form-item>
       <el-form-item>
-        <basic-button class="login-btn">登录</basic-button>
+        <basic-button class="login-btn" font-size="24px" height="40px">登录</basic-button>
       </el-form-item>
     </el-form>
     <div class="option-area">

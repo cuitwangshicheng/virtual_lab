@@ -5,7 +5,7 @@ create-time:2022-11-15
 -->
 <template>
   <div class="Basic-Button">
-    <el-button @click="clickBtn" round>
+    <el-button @click="clickBtn" round :style="btnStyle">
       <slot></slot>
     </el-button>
   </div>
@@ -14,6 +14,24 @@ create-time:2022-11-15
 <script>
 export default {
   name: 'Basic-Button',
+  props: {
+    fontSize: {
+      type: String,
+      default: '14px'
+    },
+    height: {
+      type: String,
+      default: '20px'
+    }
+  },
+  computed: {
+    btnStyle: function () {
+      return {
+        height: this.$props.height,
+        'font-size': this.$props.fontSize
+      }
+    }
+  },
   data () {
     return {
 
