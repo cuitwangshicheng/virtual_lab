@@ -61,6 +61,10 @@ export default {
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    background-image: url('@/assets/images/mihoutao.png');
+    background-repeat: no-repeat;
+    background-position: 50px 95%;
+    background-size: 80px 80px;
     .el-form{
       width: 80%;
       height: calc(100% - 280px);
