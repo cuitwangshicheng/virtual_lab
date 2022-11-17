@@ -7,13 +7,13 @@ create-time:2022-11-15
   <div class="Login-Form">
     <el-form size="large">
       <el-form-item>
-        <el-input v-model="userName" placeholder="请输入用户名"></el-input>
+        <el-input v-model="loginForm.userName" placeholder="请输入用户名"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input v-model="userPwd" placeholder="请输入密码"></el-input>
+        <el-input v-model="loginForm.userPwd" placeholder="请输入密码"></el-input>
       </el-form-item>
       <el-form-item>
-        <basic-button class="login-btn" font-size="24px" height="40px">登录</basic-button>
+        <basic-button class="login-btn" font-size="24px" height="40px" @click="login">登录</basic-button>
       </el-form-item>
     </el-form>
     <div class="option-area">
@@ -34,8 +34,15 @@ export default {
   },
   data () {
     return {
-      userName: '',
-      userPwd: ''
+      loginForm: {
+        userName: '',
+        userPwd: ''
+      }
+    }
+  },
+  methods: {
+    login () {
+      this.$store.commit('setToken', 'test')
     }
   }
 }

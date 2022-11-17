@@ -14,9 +14,14 @@ create-time:2022-11-15
           </div>
         </Rect>
       </div>
-      <div class="login-form">
+      <div class="login-form" v-if="!isLogin">
         <LoginForm></LoginForm>
       </div>
+      <transition name="el-fade-in-linear">
+        <div class="main-menu" v-if="isLogin">
+          <main-menu v-for="menu in menuList" :key="menu.id" :menu="menu"></main-menu>
+        </div>
+      </transition>
     </div>
   </div>
 </template>
@@ -24,15 +29,23 @@ create-time:2022-11-15
 <script>
 import Rect from '@/components/basic/Rect.vue'
 import LoginForm from '@/components/business/LoginForm.vue'
+import MainMenu from '@/components/business/MainMenu.vue'
+import mainMenu from '@/assets/data/main_menu.json'
 export default {
   name: 'login-page',
   components: {
     Rect,
-    LoginForm
+    LoginForm,
+    MainMenu
+  },
+  computed: {
+    isLogin: function () {
+      return this.$store.getters.getToken
+    }
   },
   data () {
     return {
-
+      menuList: mainMenu
     }
   }
 }
@@ -85,6 +98,15 @@ export default {
         text-align: center;
         margin-left:auto;
         margin-right:auto;
+      }
+      .main-menu{
+        height: 400px;
+        width:100%;
+        text-align: center;
+        margin-left:auto;
+        margin-right:auto;
+        display: flex;
+        justify-content: space-between;
       }
     }
   }
