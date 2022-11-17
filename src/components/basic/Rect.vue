@@ -6,6 +6,7 @@ create-time:2022-11-15
 <template>
   <div :class="'Basic-Rect type_'+type" :style="rectStyle">
     <slot></slot>
+    <img class="bg-img" :src="bgImg"/>
   </div>
 </template>
 
@@ -41,7 +42,7 @@ export default {
   },
   data () {
     return {
-
+      bgImg: require('@/assets/images/rect_decorate.png')
     }
   }
 }
@@ -53,16 +54,20 @@ export default {
     position:relative;
     width:100%;
     height:100%;
-    background-image: url('@/assets/images/rect_decorate.png');
-    background-repeat: no-repeat;
-    background-position: 10% 85%;
-    background-size: 95% auto;
     box-shadow: inset 0px 0.5px 1px 1px $shadow_color, 0px 2px 1px 1px $shadow_color;
     &.type_0{
       background-color:$main_color;
     }
     &.type_1{
       background-color:$sub_color;
+    }
+    .bg-img{
+      width:90%;
+      margin-left: 2%;
+      position: absolute;
+      z-index: 2;
+      left: 0;
+      bottom:30px;
     }
   }
 </style>

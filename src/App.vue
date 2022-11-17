@@ -1,18 +1,9 @@
 <template>
-  <!-- <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/> -->
-  <Login></Login>
+  <router-view></router-view>
 </template>
 <script>
-import Login from './views/Login.vue'
 export default {
-  name: 'app',
-  components: {
-    Login
-  }
+  name: 'app'
 }
 </script>
 <style lang="scss">
