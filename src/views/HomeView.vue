@@ -73,7 +73,8 @@ export default {
         topic: '（）__是能够指挥计算机工作的程序、程序运行时所需要的数据、相关文档和资料的集合的统称。',
         options: ['软件', '硬件', '高级语音', '指令系统'],
         multiCheck: false, // 是否多选
-        answer: 0
+        answer: 0,
+        answerText: 'A'
       }
     }
   }

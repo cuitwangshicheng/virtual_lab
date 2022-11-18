@@ -24,9 +24,7 @@ export default {
       default: '20px'
     },
     type: {
-      type: () => {
-        return String | Number
-      },
+      type: String,
       default: '0'
     }
   },

@@ -5,7 +5,7 @@ create-time:2022-11-18
 -->
 <template>
   <div class="Test-Card">
-    <basic-rect type="2">
+    <basic-rect :type="2">
       <!--title-->
       <div class="title">{{title}}</div>
       <!--content-->
@@ -17,6 +17,16 @@ create-time:2022-11-18
             <el-checkbox class="check-item" v-for="(item,index) in testInfo.options" :key="index" :label="index">{{item}}</el-checkbox>
           </el-checkbox-group>
         </div>
+        <!--答案和操作区-->
+        <div class="option-area">
+          <div class="answer">
+            <gradient-button height="40px" font-size="20px" type="2">正确答案：{{testInfo.answerText}}</gradient-button>
+          </div>
+          <div class="opt">
+            <gradient-button height="40px" font-size="20px" type="2" style="margin-right:20px;">确定</gradient-button>
+            <gradient-button height="40px" font-size="20px" type="2">下一题</gradient-button>
+          </div>
+        </div>
       </div>
     </basic-rect>
   </div>
@@ -24,13 +34,18 @@ create-time:2022-11-18
 
 <script>
 import BasicRect from '../basic/Rect.vue'
+import GradientButton from '../basic/GradientButton.vue'
 export default {
   name: 'Test-Card',
   components: {
-    BasicRect
+    BasicRect,
+    GradientButton
   },
   props: {
-    title: String,
+    title: {
+      type: String,
+      default: '答题'
+    },
     testInfo: {
       type: Object,
       default: null
@@ -75,15 +90,13 @@ export default {
       font-weight: bold;
     }
     .content{
-      display: flex;
-      height:calc(100% - 100px);
-      justify-content: flex-start;
+      height:calc(100% - 80px);
       margin-top:20px;
       width:100%;
       .topic{
         height:calc(100% - 180px);
         margin:20px;
-        width:calc(100% - 40px);
+        width:calc(100% - 80px);
         background-color:$content_bg_color;
         border-radius:20px;
         padding:20px;
@@ -103,6 +116,22 @@ export default {
         }
       }
     }
+    .option-area{
+      display:flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 90%;
+      margin-left:5%;
+      .answer{
+        width:140px;
+      }
+      .opt{
+        width: 300px;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+      }
+    }
   }
 </style>
 <style lang="scss">
@@ -111,6 +140,11 @@ export default {
     .content{
       .topic{
         .el-checkbox{
+          &.is-checked{
+            .el-checkbox__inner{
+              background-color: $login_form_bg_color;
+            }
+          }
           .el-checkbox__label{
             color: $white_color;
             font-size:20px;
@@ -119,6 +153,15 @@ export default {
           .el-checkbox__inner{
             width:20px;
             height:20px;
+            background-color: transparent;
+            &::after{
+              width: 6px;
+              height:12px;
+              top: 0;
+              left:6px;
+              border-width:2px;
+              border-color: $main_color;
+            }
           }
         }
       }
