@@ -9,9 +9,7 @@ create-time:2022-11-17
     <div class="option">
       <gradient-button style="width:120px;margin-top:20px;margin-right:30px;" fontSize="20px" height="40px">返回</gradient-button>
       <gradient-button style="width:120px;margin-top:20px;" fontSize="20px" height="40px">
-        <el-icon :size="30">
-          <QuestionFilled></QuestionFilled>
-        </el-icon>
+        <i class="fa fa-question-circle-o" style="font-size:26px;"></i>
       </gradient-button>
     </div>
   </div>
