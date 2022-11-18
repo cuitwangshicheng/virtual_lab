@@ -19,7 +19,8 @@
       </div>
       <!--中间区域-->
       <div class="center-panel">
-        <video-class style="height:calc(100% - 80px);" detailTitle="详细资料" :detailList="detailList" title="教学视频" type="2"></video-class>
+        <video-class style="height:calc(100% - 80px);" detailTitle="详细资料" :detailList="detailList" title="教学视频" type="2" v-if="workspaceType==='video'"></video-class>
+        <test-card style="height:calc(100% - 80px);" v-if="workspaceType==='test'" :type="testInfo.type" :testInfo="testInfo"></test-card>
       </div>
       <!--右侧区域-->
       <div class="right-panel">
@@ -39,6 +40,7 @@ import BasicNav from '@/components/basic/Nav.vue'
 import BasicList from '@/components/basic/List'
 import DetailInfo from '@/components/business/DetailInfo.vue'
 import VideoClass from '@/components/business/VideoClass.vue'
+import TestCard from '@/components/business/TestCard.vue'
 import GradientButton from '@/components/basic/GradientButton.vue'
 
 export default {
@@ -49,7 +51,8 @@ export default {
     BasicList,
     DetailInfo,
     VideoClass,
-    GradientButton
+    GradientButton,
+    TestCard
   },
   data () {
     return {
@@ -61,7 +64,17 @@ export default {
         title: '详细资料',
         list: ['1、详细资料', '2、详细资料', '3、详细资料', '4、详细资料', '5、详细资料', '6、详细资料', '7、详细资料']
       },
-      detailList: ['详细资料', '详细资料']
+      detailList: ['详细资料', '详细资料'],
+      workspaceType: 'test', // video-视频；test-测试
+      testType: 'check', // 答题类型：check-选择题
+      testInfo: {
+        id: 0,
+        type: 'check',
+        topic: '（）__是能够指挥计算机工作的程序、程序运行时所需要的数据、相关文档和资料的集合的统称。',
+        options: ['软件', '硬件', '高级语音', '指令系统'],
+        multiCheck: false, // 是否多选
+        answer: 0
+      }
     }
   }
 }
