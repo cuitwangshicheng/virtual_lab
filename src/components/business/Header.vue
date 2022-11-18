@@ -19,12 +19,10 @@ create-time:2022-11-17
 
 <script>
 import GradientButton from '@/components/basic/GradientButton.vue'
-import { QuestionFilled } from '@element-plus/icons-vue'
 export default {
   name: 'Header-Comp',
   components: {
-    GradientButton,
-    QuestionFilled
+    GradientButton
   },
   data () {
     return {

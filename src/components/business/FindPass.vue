@@ -1,23 +1,23 @@
 <!--
-name:注册组件
+name:找回密码组件
 creator:CUIT_MOON
 create-time:2022-11-18
 -->
 <template>
-  <div class="Register-Form">
+  <div class="Find-Pass">
     <el-form size="large">
       <el-form-item>
-        <el-input v-model="registerForm.userName" placeholder="请输入手机号码/邮箱"></el-input>
+        <el-input v-model="findForm.userName" placeholder="请输入手机号码/邮箱"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input type="password" v-model="registerForm.userPwd" placeholder="请设置登录密码"></el-input>
+        <el-input type="password" v-model="findForm.userPwd" placeholder="请设置新的登录密码"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input v-model="registerForm.verifyCode" placeholder="验证码"></el-input>
+        <el-input v-model="findForm.verifyCode" placeholder="验证码"></el-input>
         <basic-button class="verify-code-btn" height="30px" font-size="16px" :disabled="waitingCodeFlag" @click="sendVerifyCode">{{waitingCodeFlag?`${waitingTime}s重新发送`:'发送验证码'}}</basic-button>
       </el-form-item>
       <el-form-item>
-        <basic-button class="register-btn" font-size="24px" height="40px" @click="register">注册账号</basic-button>
+        <basic-button class="find-btn" font-size="24px" height="40px" @click="register">找回密码</basic-button>
         <el-button style="width:100%;font-size:24px;color:#606266;box-shadow: 0 1px 1px 1px #ccc;" round @click="goLogin">返回登录</el-button>
       </el-form-item>
     </el-form>
@@ -27,13 +27,13 @@ create-time:2022-11-18
 <script>
 import BasicButton from '@/components/basic/Button.vue'
 export default {
-  name: 'Register-Form',
+  name: 'Find-Pass',
   components: {
     BasicButton
   },
   data () {
     return {
-      registerForm: {
+      findForm: {
         userName: '',
         userPwd: '',
         confirmPwd: ''
@@ -76,7 +76,7 @@ export default {
 
 <style lang="scss" scoped>
   @import '~@/assets/style/color.scss';
-  .Register-Form{
+  .Find-Pass{
     position:relative;
     width:100%;
     height:100%;
@@ -94,7 +94,7 @@ export default {
     .el-form{
       width: 80%;
       height: 80%;
-      .register-btn{
+      .find-btn{
         width:100%;
         height: 60px;
       }
@@ -107,7 +107,7 @@ export default {
   }
 </style>
 <style lang="scss">
-  .Register-Form{
+  .Find-Pass{
     .el-form{
       .el-input{
         .el-input__wrapper{

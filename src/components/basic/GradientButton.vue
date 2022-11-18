@@ -72,6 +72,9 @@ export default {
       &.type_1{
         background: $button_gradient_color_1;
       }
+      &.type_2{
+        background: $title_gradient_color;
+      }
     }
   }
 </style>

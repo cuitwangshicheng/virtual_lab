@@ -15,7 +15,9 @@ create-time:2022-11-15
         </Rect>
       </div>
       <div class="login-form" v-if="!isLogin">
-        <LoginForm v-if="state='login-form'"></LoginForm>
+        <LoginForm v-if="state==='login-form'" @register="state='register-form'" @find-pass="state='find-form'"></LoginForm>
+        <register-form v-if="state==='register-form'" @login="state='login-form'"></register-form>
+        <find-form v-if="state==='find-form'" @login="state='login-form'"></find-form>
       </div>
       <transition name="el-fade-in-linear">
         <div class="main-menu" v-if="isLogin">
@@ -23,19 +25,26 @@ create-time:2022-11-15
         </div>
       </transition>
     </div>
+    <basic-alert show-shade :text="alertText" :type="alertType" v-if="showAlert" @ok="showAlert=false"></basic-alert>
   </div>
 </template>
 
 <script>
 import Rect from '@/components/basic/Rect.vue'
 import LoginForm from '@/components/business/LoginForm.vue'
+import RegisterForm from '@/components/business/RegisterForm.vue'
+import FindForm from '@/components/business/FindPass.vue'
 import MainMenu from '@/components/business/MainMenu.vue'
+import BasicAlert from '@/components/basic/Alert.vue'
 import mainMenu from '@/assets/data/main_menu.json'
 export default {
   name: 'login-page',
   components: {
     Rect,
     LoginForm,
+    RegisterForm,
+    FindForm,
+    BasicAlert,
     MainMenu
   },
   computed: {
@@ -46,7 +55,10 @@ export default {
   data () {
     return {
       menuList: mainMenu,
-      state: 'login-form' // 定义首页未登录时状态：login-form-显示登录框；register-form-显示注册框；findPwd-找回密码框
+      state: 'login-form', // 定义首页未登录时状态：login-form-显示登录框；register-form-显示注册框；find-form-找回密码框
+      showAlert: false,
+      alertText: [],
+      alertType: 'info'
     }
   }
 }
