@@ -15,7 +15,7 @@ create-time:2022-11-15
         </Rect>
       </div>
       <div class="login-form" v-if="!isLogin">
-        <LoginForm></LoginForm>
+        <LoginForm v-if="state='login-form'"></LoginForm>
       </div>
       <transition name="el-fade-in-linear">
         <div class="main-menu" v-if="isLogin">
@@ -45,7 +45,8 @@ export default {
   },
   data () {
     return {
-      menuList: mainMenu
+      menuList: mainMenu,
+      state: 'login-form' // 定义首页未登录时状态：login-form-显示登录框；register-form-显示注册框；findPwd-找回密码框
     }
   }
 }
