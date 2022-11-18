@@ -26,7 +26,7 @@ export default {
       type: String,
       default: '20px'
     },
-    type: { // 0-主色调背景；1-次色调背景
+    type: { // 0-主色调背景；1-次色调背景;2-无背景
       type: Number,
       default: 0
     }
@@ -61,12 +61,16 @@ export default {
     &.type_1{
       background-color:$sub_color;
     }
+    &.type_2{
+      background-color: transparent;
+      box-shadow: none;
+    }
     .bg-img{
-      width:90%;
-      margin-left: 2%;
+      width:98%;
       position: absolute;
       z-index: 2;
       left: 0;
+      height: 30px;
       bottom:30px;
     }
   }

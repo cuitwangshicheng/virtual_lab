@@ -5,28 +5,22 @@ create-time:2022-11-17
 -->
 <template>
   <div class="Video-Comp">
-    <basic-rect borderRadius="60px">
-      <video id="example_video_1" class=" video-plugin" preload="none" data-setup="{}">
-        <source src="" type="video/mp4">
-        <source src="" type="video/webm">
-        <source src="" type="video/ogg">
-        <track kind="captions" src="../shared/example-captions.vtt" srclang="en" label="English">
-        <!-- Tracks need an ending tag thanks to IE9 -->
-        <track kind="subtitles" src="../shared/example-captions.vtt" srclang="en" label="English">
-        <!-- Tracks need an ending tag thanks to IE9 -->
-        <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
-      </video>
-    </basic-rect>
+    <video id="example_video_1" class=" video-plugin" preload="none" data-setup="{}">
+      <source src="" type="video/mp4">
+      <source src="" type="video/webm">
+      <source src="" type="video/ogg">
+      <track kind="captions" src="../shared/example-captions.vtt" srclang="en" label="English">
+      <!-- Tracks need an ending tag thanks to IE9 -->
+      <track kind="subtitles" src="../shared/example-captions.vtt" srclang="en" label="English">
+      <!-- Tracks need an ending tag thanks to IE9 -->
+      <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+    </video>
   </div>
 </template>
 
 <script>
-import BasicRect from '../basic/Rect.vue'
 export default {
   name: 'Video-Comp',
-  components: {
-    BasicRect
-  },
   data () {
     return {
       videoWidth: 1024,
@@ -61,10 +55,8 @@ export default {
     justify-content: center;
     align-items: center;
     .video-plugin{
-      width: calc(100% - 60px);
-      height: calc(100% - 120px);
-      margin-left: 30px;
-      margin-top:30px;
+      width: 100%;
+      height: 100%;
       background-color:$content_bg_color;
       border-radius: 30px;
       background-image:url('@/assets/images/play.png');

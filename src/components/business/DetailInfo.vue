@@ -39,7 +39,7 @@ export default {
   .Detail-Info{
     position:relative;
     width:100%;
-    height:100%;
+    height:calc(100% - 40px);
     border-radius: 50px;
     text-align: center;
     padding-top: 30px;
@@ -69,6 +69,7 @@ export default {
       padding:20px 20px;
       border-radius:50px;
       overflow-y: auto;
+      height: calc(100% - 80px);
       .list-item{
         height: 30px;
         background-color: $grey_color;
