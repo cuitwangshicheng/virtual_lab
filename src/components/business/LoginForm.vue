@@ -10,7 +10,7 @@ create-time:2022-11-15
         <el-input v-model="loginForm.userName" placeholder="请输入手机号码/邮箱"></el-input>
       </el-form-item>
       <el-form-item prop="userPwd">
-        <el-input type="password" v-model="loginForm.userPwd" placeholder="请输入登录密码"></el-input>
+        <el-input type="password" v-model="loginForm.userPwd" placeholder="请输入登录密码" @keyup.enter="login"></el-input>
       </el-form-item>
       <el-form-item>
         <basic-button class="login-btn" font-size="24px" height="40px" @click="login">登录</basic-button>
