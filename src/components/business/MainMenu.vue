@@ -8,7 +8,8 @@ create-time:2022-11-17
     <div class="group" v-if="menu">
       <div class="main">{{menu.name}}</div>
       <div class="sub-menu">
-        <div class="menu-item" @click="goHome" v-for="sub in menu.subMenu" :key="sub.id">{{sub.name}}</div>
+        <!--eslint-disable-next-line-->
+        <div class="menu-item" v-for="sub in menu.subMenu" :key="sub.id" @click="goHome(sub)">{{sub.name}}</div>
       </div>
     </div>
   </div>
@@ -28,8 +29,11 @@ export default {
     }
   },
   methods: {
-    goHome () {
-      this.$router.push('/home')
+    goHome (menu) {
+      this.$store.commit('setCurrentMenu', menu)
+      this.$router.push({
+        path: '/home'
+      })
     }
   }
 }

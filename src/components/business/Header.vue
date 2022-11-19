@@ -5,9 +5,9 @@ create-time:2022-11-17
 -->
 <template>
   <div class="Header-Comp">
-    <div class="title">红阳猕猴桃背景知识学习</div>
+    <div class="title">{{title}}</div>
     <div class="option">
-      <gradient-button style="width:120px;margin-top:20px;margin-right:30px;" fontSize="20px" height="40px">返回</gradient-button>
+      <gradient-button style="width:120px;margin-top:20px;margin-right:30px;" fontSize="20px" height="40px" @click="goBack">返回</gradient-button>
       <gradient-button style="width:120px;margin-top:20px;" fontSize="20px" height="40px">
         <i class="fa fa-question-circle-o" style="font-size:26px;"></i>
       </gradient-button>
@@ -19,12 +19,25 @@ create-time:2022-11-17
 import GradientButton from '@/components/basic/GradientButton.vue'
 export default {
   name: 'Header-Comp',
+  props: {
+    title: {
+      type: String,
+      default: () => {
+        return ''
+      }
+    }
+  },
   components: {
     GradientButton
   },
   data () {
     return {
 
+    }
+  },
+  methods: {
+    goBack () {
+      this.$router.push('/')
     }
   }
 }

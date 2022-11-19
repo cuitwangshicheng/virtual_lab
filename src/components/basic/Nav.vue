@@ -52,8 +52,8 @@ export default {
       content: '';
       display: block;
       border-top: 30px solid transparent;
-      border-bottom: 31px solid transparent;
-      border-left: 31px solid $login_form_bg_color;
+      border-bottom: 30px solid transparent;
+      border-left: 30px solid $login_form_bg_color;
       position: absolute;
       right: -30px;
       top: 0;

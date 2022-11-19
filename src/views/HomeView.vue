@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <header-comp></header-comp>
+    <header-comp :title="currentMenu.name"></header-comp>
     <div class="nav">
       <basic-nav class="nav-item">背景介绍</basic-nav>
       <div class="dot"></div>
@@ -71,11 +71,20 @@ export default {
         id: 0,
         type: 'check',
         topic: '（）__是能够指挥计算机工作的程序、程序运行时所需要的数据、相关文档和资料的集合的统称。',
-        options: ['软件', '硬件', '高级语音', '指令系统'],
+        options: ['A.软件', 'B.硬件', 'C.高级语音', 'D.指令系统'],
         multiCheck: false, // 是否多选
         answer: 0,
         answerText: 'A'
-      }
+      },
+      currentMenu: {}
+    }
+  },
+  mounted () {
+    try {
+      this.currentMenu = this.$store.getters.getCurrentMenu
+      console.log(this.currentMenu)
+    } catch (e) {
+      this.$message.error('菜单初始化异常')
     }
   }
 }
