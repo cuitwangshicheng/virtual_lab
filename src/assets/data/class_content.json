@@ -1,0 +1,41 @@
+{
+  "11": [{
+    "name": "文化背景",
+    "list": [{
+      "type": "video",
+      "url": []
+    }]
+  }, {
+    "name": "产业背景",
+    "list": [{
+      "type": "video",
+      "url": []
+    }]
+  }],
+  "12": [{
+    "name": "整形修剪技术",
+    "list": [{
+      "type": "text",
+      "content": ""
+    }]
+  }, {
+    "name": "整形修剪思路",
+    "list": [{
+      "type": "video",
+      "url": []
+    }, {
+      "type": "test",
+      "list": []
+    }]
+  }],
+  "21": [{
+    "name": "树体结构",
+    "list": []
+  }, {
+    "name": "生物学特征结果习性",
+    "list": [{
+      "type": "video",
+      "url": []
+    }]
+  }]
+}
