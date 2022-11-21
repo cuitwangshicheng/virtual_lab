@@ -3,13 +3,13 @@
     "name": "文化背景",
     "list": [{
       "type": "video",
-      "url": []
+      "url": ["./static/video/test.mp4"]
     }]
   }, {
     "name": "产业背景",
     "list": [{
       "type": "video",
-      "url": []
+      "url": ["./static/video/test1.mp4"]
     }]
   }],
   "12": [{

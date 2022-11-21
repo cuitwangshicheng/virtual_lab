@@ -2,15 +2,20 @@
   <div class="home">
     <header-comp :title="currentMenu.name"></header-comp>
     <div class="nav">
-      <basic-nav class="nav-item">背景介绍</basic-nav>
-      <div class="dot"></div>
-      <basic-nav class="nav-item" active>整形修剪实训介绍</basic-nav>
+      <div style="display:flex;" v-if="currentMenu.subMenu">
+        <div style="display:flex;" v-for="(item, index) in currentMenu.subMenu" :key="item.id">
+          <div style="display:flex;align-items: center;">
+            <basic-nav :class="index===currentNavIndex?'nav-item active':'nav-item'" @click="changeNav(index, item.id)">{{item.name}}</basic-nav>
+            <div class="dot" v-if="index !== currentMenu.subMenu.length - 1"></div>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="container">
       <!--左侧区域-->
       <div class="left-panel">
         <div class="left-top-panel">
-          <basic-list :list="leftTopInfo.list"></basic-list>
+          <basic-collapse style="width:80%;" :list="currentClass" @click="checkClass"></basic-collapse>
         </div>
         <div class="left-bottom-panel">
           <div class="title">{{leftBottomInfo.title}}</div>
@@ -19,8 +24,8 @@
       </div>
       <!--中间区域-->
       <div class="center-panel">
-        <video-class style="height:calc(100% - 80px);" detailTitle="详细资料" :detailList="detailList" title="教学视频" type="2" v-if="workspaceType==='video'"></video-class>
-        <test-card style="height:calc(100% - 80px);" v-if="workspaceType==='test'" :type="testInfo.type" :testInfo="testInfo"></test-card>
+        <video-class style="height:calc(100% - 80px);" title="教学视频" type="1" v-if="currentClassInfo && currentClassInfo.type==='video'" :url="currentClassVideo"></video-class>
+        <test-card style="height:calc(100% - 80px);" v-if="currentClassInfo && currentClassInfo.type==='test'" :type="currentClassInfo.testInfo.type" :testInfo="currentClassInfo.testInfo"></test-card>
       </div>
       <!--右侧区域-->
       <div class="right-panel">
@@ -37,19 +42,21 @@
 // @ is an alias to /src
 import HeaderComp from '@/components/business/Header.vue'
 import BasicNav from '@/components/basic/Nav.vue'
-import BasicList from '@/components/basic/List'
+import BasicCollapse from '@/components/basic/Collapse'
 import DetailInfo from '@/components/business/DetailInfo.vue'
 import VideoClass from '@/components/business/VideoClass.vue'
 import TestCard from '@/components/business/TestCard.vue'
 import GradientButton from '@/components/basic/GradientButton.vue'
+
+import ClassContent from '@/assets/data/class_content.json'
 
 export default {
   name: 'HomeView',
   components: {
     HeaderComp,
     BasicNav,
-    BasicList,
     DetailInfo,
+    BasicCollapse,
     VideoClass,
     GradientButton,
     TestCard
@@ -76,15 +83,50 @@ export default {
         answer: 0,
         answerText: 'A'
       },
-      currentMenu: {}
+      currentMenu: {},
+      currentNavIndex: 0,
+      currentClass: [], // 当前课程列表，用于构建左侧列表
+      classList: [], // 课程列表，用于构建中间工作区内容
+      classIndex: 0, // 当前课程索引
+      currentClassInfo: null,
+      currentClassVideoIndex: 0,
+      currentClassVideo: ''
     }
   },
   mounted () {
     try {
       this.currentMenu = this.$store.getters.getCurrentMenu
-      console.log(this.currentMenu)
+      if (this.currentMenu.subMenu instanceof Array) {
+        if (this.currentMenu.subMenu.length > 0) {
+          console.log('123')
+          this.currentClass = ClassContent['' + this.currentMenu.subMenu[0].id]
+          console.log(this.currentClass)
+          this.currentClassInfo = this.currentClass[this.classIndex]
+          if (this.currentClassInfo.type === 'video') {
+            this.currentClassVideo = this.currentClassInfo.url[this.currentClassVideoIndex]
+          }
+        }
+      }
     } catch (e) {
       this.$message.error('菜单初始化异常')
+    }
+  },
+  methods: {
+    // 选择课程
+    checkClass (list) {
+      this.classList = list
+      if (list instanceof Array && list.length > 0) {
+        this.currentClassInfo = list[this.classIndex]
+        console.log(this.currentClassInfo)
+        if (this.currentClassInfo.type === 'video') {
+          this.currentClassVideo = this.currentClassInfo.url[this.currentClassVideoIndex]
+          console.log(this.currentClassVideo)
+        }
+      }
+    },
+    changeNav (index, id) {
+      this.currentNavIndex = index
+      console.log(ClassContent['' + id])
     }
   }
 }

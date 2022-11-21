@@ -5,42 +5,63 @@ create-time:2022-11-17
 -->
 <template>
   <div class="Video-Comp">
-    <video id="example_video_1" class=" video-plugin" preload="none" data-setup="{}">
-      <source src="" type="video/mp4">
-      <source src="" type="video/webm">
-      <source src="" type="video/ogg">
-      <track kind="captions" src="../shared/example-captions.vtt" srclang="en" label="English">
-      <!-- Tracks need an ending tag thanks to IE9 -->
-      <track kind="subtitles" src="../shared/example-captions.vtt" srclang="en" label="English">
-      <!-- Tracks need an ending tag thanks to IE9 -->
-      <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+    <video :id="id" class="video-plugin" preload="none" data-setup="{}">
+      <source src="http://localhost:8081/static/video/test.mp4" type="video/mp4">
     </video>
+    <!-- <video :src="require('@/assets/video/test.mp4')" autoplay controls></video> -->
+    <!--停止播放状态-->
+    <div class="start-btn" v-if="state==='pause'" @click="play"></div>
   </div>
 </template>
 
 <script>
 export default {
   name: 'Video-Comp',
+  props: {
+    url: String
+  },
+  watch: {
+    url: function (n, o) {
+      if (this.player) {
+        this.player.pause()
+        this.player.dispose()
+        this.state = 'pause'
+      }
+    }
+  },
   data () {
     return {
-      videoWidth: 1024,
-      videoHeight: 768
+      videoWidth: 1200,
+      videoHeight: 529,
+      player: null,
+      id: 'player_' + new Date().getTime(),
+      state: 'pause'
     }
   },
   mounted () {
     // eslint-disable-next-line
-    var player = videojs('video', { }, function () {
+    this.player = videojs(this.id, { }, () => {
       this.$emit('init')
     })
-    player.on('play', function () {
+    this.player.on('play', () => {
+      this.state = 'playing'
       this.$emit('play')
     })
-    player.on('pause', function () {
+    this.player.on('pause', () => {
+      this.state = 'pause'
       this.$emit('pause')
     })
-    player.on('ended', function () {
-      console.log('结束播放')
+    this.player.on('ended', () => {
+      this.state = 'pause'
+      this.$emit('stop')
     })
+  },
+  methods: {
+    play () {
+      this.player.ready(() => {
+        this.player.play()
+      })
+    }
   }
 }
 </script>
@@ -59,10 +80,26 @@ export default {
       height: 100%;
       background-color:$content_bg_color;
       border-radius: 30px;
+      video{
+        width:100%;
+        height:100%;
+      }
+    }
+    .start-btn{
+      position: absolute;
+      left: calc(50% - 100px);
+      top: calc(50% - 100px);
+      z-index: 9;
       background-image:url('@/assets/images/play.png');
       background-position: 50% 50%;
       background-repeat: no-repeat;
       background-size: 200px 200px;
+      width:200px;
+      height:200px;
+      cursor: pointer;
+      &:hover{
+        transform: scale(1.5);
+      }
     }
   }
 </style>

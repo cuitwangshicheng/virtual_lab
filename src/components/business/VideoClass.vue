@@ -5,12 +5,12 @@ create-time:2022-11-18
 -->
 <template>
   <div class="Video-Class">
-    <basic-rect type="2">
+    <basic-rect :type="2">
       <!--title-->
       <div class="title">{{title}}</div>
       <!--content-->
       <div class="content">
-        <video-comp class="left-panel"></video-comp>
+        <video-comp class="left-panel" :url="url"></video-comp>
         <detail-info class="right-panel" :type="2" v-if="type==='2'" :title="detailTitle" style="margin-left:20px;" :list="detailList"></detail-info>
       </div>
     </basic-rect>
@@ -29,6 +29,7 @@ export default {
     DetailInfo
   },
   props: {
+    url: String,
     title: String,
     detailList: Array,
     detailTitle: String,
