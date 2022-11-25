@@ -48,12 +48,12 @@ export default {
   .Header-Comp{
     position:relative;
     width:100%;
-    height:90px;
-    background-color:$main_color;
+    height:70px;
     display: flex;
     justify-content: space-between;
+    padding-top: 20px;
     .title{
-      width: calc(100% - 600px);
+      width: calc(100% - 620px);
       border-top-right-radius: 60px;
       border-bottom-right-radius: 60px;
       height: 60px;
@@ -65,6 +65,7 @@ export default {
       padding: 0 20px;
       font-size:32px;
       font-weight: bolder;
+      margin-left:20px;
     }
     .option{
       background:$content_bg_color;

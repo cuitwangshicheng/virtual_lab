@@ -126,7 +126,7 @@ export default {
     },
     changeNav (index, id) {
       this.currentNavIndex = index
-      console.log(ClassContent['' + id])
+      this.currentClass = ClassContent['' + id]
     }
   }
 }

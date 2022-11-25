@@ -5,9 +5,11 @@ create-time:2022-11-17
 -->
 <template>
   <div class="Video-Comp">
-    <video :id="id" class="video-plugin" preload="none" data-setup="{}">
-      <source src="http://localhost:8081/static/video/test.mp4" type="video/mp4">
-    </video>
+    <div ref="videoRef" class="video-plugin">
+      <video :id="id" preload="none" data-setup="{}" style="width:100%;height:100%;">
+        <source src="http://localhost:8081/static/video/test.mp4" type="video/mp4">
+      </video>
+    </div>
     <!-- <video :src="require('@/assets/video/test.mp4')" autoplay controls></video> -->
     <!--停止播放状态-->
     <div class="start-btn" v-if="state==='pause'" @click="play"></div>
@@ -26,6 +28,12 @@ export default {
         this.player.pause()
         this.player.dispose()
         this.state = 'pause'
+        this.$refs.videoRef.innerHTML = `<video id="${this.id}"  style="width:100%;height:100%;" preload="none" data-setup="{}">
+          <source src="http://localhost:8081/static/video/test.mp4" type="video/mp4">
+        </video>`
+        this.$nextTick(() => {
+          this.init()
+        })
       }
     }
   },
@@ -39,24 +47,27 @@ export default {
     }
   },
   mounted () {
-    // eslint-disable-next-line
-    this.player = videojs(this.id, { }, () => {
-      this.$emit('init')
-    })
-    this.player.on('play', () => {
-      this.state = 'playing'
-      this.$emit('play')
-    })
-    this.player.on('pause', () => {
-      this.state = 'pause'
-      this.$emit('pause')
-    })
-    this.player.on('ended', () => {
-      this.state = 'pause'
-      this.$emit('stop')
-    })
+    this.init()
   },
   methods: {
+    init () {
+      // eslint-disable-next-line
+      this.player = videojs(this.id, { }, () => {
+        this.$emit('init')
+      })
+      this.player.on('play', () => {
+        this.state = 'playing'
+        this.$emit('play')
+      })
+      this.player.on('pause', () => {
+        this.state = 'pause'
+        this.$emit('pause')
+      })
+      this.player.on('ended', () => {
+        this.state = 'pause'
+        this.$emit('stop')
+      })
+    },
     play () {
       this.player.ready(() => {
         this.player.play()
