@@ -50,11 +50,63 @@
     "name": "树体结构",
     "list": [{
       "type": "view3d",
-      "preName": "S2_SC_XL_TreeRotation_",
-      "start": 10014,
-      "end": 10104,
+      "preName": "猕猴桃树旋转动画",
+      "start": 0,
+      "end": 80,
       "extName": "png",
       "pathUrl": "./static/img/classes/树体结构/"
+    }, {
+      "type": "image-marker",
+      "img": "./static/img/classes/树体结构图片标记/shuru1.png",
+      "answer": "主干",
+      "position": ["48%", "70%"]
+    }, {
+      "type": "image-marker",
+      "img": "./static/img/classes/树体结构图片标记/shuru2.png",
+      "answer": "母蔓座",
+      "position": ["56%", "calc(100px + 45%)"]
+    }, {
+      "type": "image-marker",
+      "img": "./static/img/classes/树体结构图片标记/shuru3.png",
+      "answer": "结果枝",
+      "position": ["58%", "calc(100px + 3%)"]
+    }, {
+      "type": "image-marker",
+      "img": "./static/img/classes/树体结构图片标记/shuru4.png",
+      "answer": "营养枝",
+      "position": ["37%", "calc(100px + 19%)"]
+    }, {
+      "type": "images-array",
+      "name": "图片集合",
+      "list": [{
+        "url": "./static/img/classes/树体结构图文/1.png",
+        "title": "主干",
+        "description": "主干是指从根茎以上至着生第一个分支的部分。"
+      }, {
+        "url": "./static/img/classes/树体结构图文/2.png",
+        "title": "主干",
+        "description": "主干是指从根茎以上至着生第一个分支的部分。"
+      }, {
+        "url": "./static/img/classes/树体结构图文/3.png",
+        "title": "主干",
+        "description": "主干是指从根茎以上至着生第一个分支的部分。"
+      }, {
+        "url": "./static/img/classes/树体结构图文/4.png",
+        "title": "主干",
+        "description": "主干是指从根茎以上至着生第一个分支的部分。"
+      }, {
+        "url": "./static/img/classes/树体结构图文/5.png",
+        "title": "主干",
+        "description": "主干是指从根茎以上至着生第一个分支的部分。"
+      }, {
+        "url": "./static/img/classes/树体结构图文/6.png",
+        "title": "主干",
+        "description": "主干是指从根茎以上至着生第一个分支的部分。"
+      }, {
+        "url": "./static/img/classes/树体结构图文/7.png",
+        "title": "主干",
+        "description": "主干是指从根茎以上至着生第一个分支的部分。"
+      }]
     }]
   }, {
     "name": "生物学特征结果习性",

@@ -7,7 +7,7 @@ create-time:2022-11-17
   <div :class="'Detail-Info type_'+type">
     <div class="title">{{title}}</div>
     <div class="content-list">
-      <div class="list-item" v-for="item in list" :key="item">{{item}}</div>
+      <div class="list-item">{{content}}</div>
     </div>
   </div>
 </template>
@@ -16,7 +16,7 @@ create-time:2022-11-17
 export default {
   name: 'Detail-Info-2',
   props: {
-    list: Array,
+    content: String,
     title: {
       type: String,
       default: ''
@@ -70,12 +70,15 @@ export default {
       border-radius:50px;
       overflow-y: auto;
       height: calc(100% - 80px);
+      text-align: left;
       .list-item{
-        height: 30px;
         background-color: $grey_color;
         margin-top:5px;
         margin-bottom:5px;
-        line-height: 30px;
+        height: calc(100% - 10px);
+        line-height: 40px;
+        font-size:20px;
+        font-weight: bold;
       }
     }
   }

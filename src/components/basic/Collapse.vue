@@ -29,7 +29,7 @@ export default {
     this.$nextTick(() => {
       if (this.$props.list.length > 0) {
         if (!this.$props.list[0].subList) {
-          this.clickHeader(this.$props.list[0].list, this.$props.list[0].name)
+          this.clickHeader(this.$props.list[0], this.$props.list[0].name)
         } else {
           this.activeName = this.$props.list[0].name
           this.clickItem(0, this.$props.list[0].subList)

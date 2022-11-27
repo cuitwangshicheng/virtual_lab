@@ -5,7 +5,7 @@ create-time:2022-11-17
 -->
 <template>
   <div class="Gradient-Button">
-    <el-button :class="'type_'+type" @click="clickBtn" round :style="btnStyle">
+    <el-button :class="'type_'+type" round :style="btnStyle">
       <slot></slot>
     </el-button>
   </div>
@@ -39,11 +39,6 @@ export default {
   data () {
     return {
 
-    }
-  },
-  methods: {
-    clickBtn () {
-      this.$emit('click')
     }
   }
 }

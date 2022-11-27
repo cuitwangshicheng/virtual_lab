@@ -29,13 +29,15 @@
           <test-card v-if="currentClassInfo && currentClassInfo.type==='test'" :type="currentClassInfo.testInfo.type" :testInfo="currentClassInfo.testInfo"></test-card>
           <text-comp v-if="currentClassInfo && currentClassInfo.type==='text'" :content="currentClassInfo.content"></text-comp>
           <viewer3-d v-if="currentClassInfo && currentClassInfo.type==='view3d'" :path-url="currentClassInfo.pathUrl" :start="currentClassInfo.start" :end="currentClassInfo.end" :extName="currentClassInfo.extName" :preName="currentClassInfo.preName"></viewer3-d>
+          <image-marker v-if="currentClassInfo && currentClassInfo.type==='image-marker'" :url="currentClassInfo.img" :circle-postion="currentClassInfo.position"></image-marker>
+          <images-view v-if="currentClassInfo && currentClassInfo.type==='images-array'" :list="currentClassInfo.list" :title="currentClassInfo.name"></images-view>
         </div>
       </div>
       <!--右侧区域-->
       <div class="right-panel">
         <div class="option-btn">
-          <gradient-button type="1" height="40px" fontSize="20px">上一步</gradient-button>
-          <gradient-button type="1" height="40px" fontSize="20px">下一步</gradient-button>
+          <gradient-button type="1" height="40px" fontSize="20px" @click="preStep">上一步</gradient-button>
+          <gradient-button type="1" height="40px" fontSize="20px" @click="nextStep">下一步</gradient-button>
         </div>
       </div>
     </div>
@@ -53,6 +55,8 @@ import TestCard from '@/components/business/TestCard.vue'
 import GradientButton from '@/components/basic/GradientButton.vue'
 import TextComp from '@/components/business/Text.vue'
 import Viewer3D from '@/components/business/Viewer-3D.vue'
+import ImageMarker from '@/components/business/ImageMarker.vue'
+import ImagesView from '@/components/business/ImagesView.vue'
 
 import ClassContent from '@/assets/data/class_content.json'
 
@@ -67,7 +71,9 @@ export default {
     VideoClass,
     GradientButton,
     TestCard,
-    Viewer3D
+    Viewer3D,
+    ImageMarker,
+    ImagesView
   },
   data () {
     return {
@@ -97,6 +103,7 @@ export default {
       classList: [], // 课程列表，用于构建中间工作区内容
       classIndex: 0, // 当前课程索引
       currentClassInfo: null,
+      currentClassIndex: 0,
       currentClassVideoIndex: 0,
       currentClassVideo: ''
     }
@@ -106,10 +113,11 @@ export default {
       this.currentMenu = this.$store.getters.getCurrentMenu
       if (this.currentMenu.subMenu instanceof Array) {
         if (this.currentMenu.subMenu.length > 0) {
-          console.log('123')
           this.currentClass = ClassContent['' + this.currentMenu.subMenu[0].id]
           console.log(this.currentClass)
-          this.currentClassInfo = this.currentClass[this.classIndex]
+          this.currentClassInfo = this.currentClass[this.classIndex].list[0]
+          this.classList = this.currentClass[this.classIndex].list
+          console.log(this.classList)
           if (this.currentClassInfo.type === 'video') {
             this.currentClassVideo = this.currentClassInfo.url[this.currentClassVideoIndex]
           }
@@ -120,11 +128,30 @@ export default {
     }
   },
   methods: {
+    // 上一步
+    preStep () {
+      if (this.classList) {
+        if (this.currentClassIndex > 0) {
+          this.currentClassIndex--
+          this.currentClassInfo = this.classList[this.currentClassIndex]
+        }
+      }
+    },
+    // 下一步
+    nextStep () {
+      if (this.classList) {
+        if (this.currentClassIndex < this.classList.length - 1) {
+          this.currentClassIndex++
+          this.currentClassInfo = this.classList[this.currentClassIndex]
+        }
+      }
+    },
     // 选择课程
     checkClass (list) {
+      console.log(list)
       this.classList = list
       if (list instanceof Array && list.length > 0) {
-        this.currentClassInfo = list[this.classIndex]
+        this.currentClassInfo = list[this.currentClassIndex]
         console.log(this.currentClassInfo)
         if (this.currentClassInfo.type === 'video') {
           this.currentClassVideo = this.currentClassInfo.url[this.currentClassVideoIndex]

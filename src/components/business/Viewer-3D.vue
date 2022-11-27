@@ -9,7 +9,7 @@ create-time:2022-11-27
     <i class="fa fa-angle-left" @mousedown="startRollLeft" @mouseup="stopRoll"></i>
     <!--主视窗-->
     <div class="img-container">
-      <img style="margin-top: -5%;" :src="url" />
+      <img :src="url" />
     </div>
     <!---右侧旋转按钮-->
     <i class="fa fa-angle-right right-icon" @mousedown="startRollRight" @mouseup="stopRoll"></i>
@@ -72,7 +72,7 @@ export default {
         if (this.keyDownFlag) {
           this.rollLeft()
         }
-      }, 50)
+      }, 100)
     },
     startRollRight () {
       this.keyDownFlag = true
@@ -80,7 +80,7 @@ export default {
         if (this.keyDownFlag) {
           this.rollRight()
         }
-      }, 50)
+      }, 100)
     },
     keyDown () {
       document.onkeydown = e => {
