@@ -6,8 +6,8 @@ create-time:2022-11-21
 <template>
   <div class="Basic-Collapse">
     <el-collapse accordion v-model="activeName">
-      <el-collapse-item v-for="item in list" :key="item.name" :name="item.name" :title="item.name" :class="item.subList && item.subList.length > 0?'has-list':'no-list'" @click="clickHeader(item.list, item.name)">
-        <div v-for="(subItem,index) in item.subList" :key="'collapse_'+index">{{subItem.name}}</div>
+      <el-collapse-item v-for="item in list" :key="item.name" :name="item.name" :title="item.name" :class="item.subList && item.subList.length > 0?'has-list':'no-list'" @click="clickHeader(item, item.name)">
+        <div :class="index===activeItemIndex?'collapse-sub-item active':'collapse-sub-item'" v-for="(subItem,index) in item.subList" :key="'collapse_'+index" @click="clickItem(index, subItem)">{{subItem.name}}</div>
       </el-collapse-item>
     </el-collapse>
   </div>
@@ -21,7 +21,8 @@ export default {
   },
   data () {
     return {
-      activeName: this.$props.list.length > 0 ? this.$props.list[0].name : ''
+      activeName: this.$props.list.length > 0 ? this.$props.list[0].name : '',
+      activeItemIndex: 0
     }
   },
   mounted () {
@@ -29,24 +30,47 @@ export default {
       if (this.$props.list.length > 0) {
         if (!this.$props.list[0].subList) {
           this.clickHeader(this.$props.list[0].list, this.$props.list[0].name)
+        } else {
+          this.activeName = this.$props.list[0].name
+          this.clickItem(0, this.$props.list[0].subList)
         }
       }
     })
   },
   methods: {
-    clickHeader (contentList, name) {
-      this.activeName = name
-      this.$emit('click', contentList)
+    clickHeader (item, name) {
+      if (!item.subList) {
+        this.activeName = name
+        this.$emit('click', item.list)
+      }
+    },
+    clickItem (index, item) {
+      this.activeItemIndex = index
+      this.$emit('click', item.list)
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
+  @import '@/assets/style/color.scss';
   .Basic-Collapse{
     position:relative;
     width:100%;
     height:100%;
+    .collapse-sub-item{
+      height: 30px;
+      line-height: 30px;
+      background-color:$white_color;
+      padding-left:10px;
+      cursor: pointer;
+      border-top: 1px solid $white_color;
+      &.active{
+        cursor: default;
+        background-color: $login_form_bg_color;
+        color:$white_color;
+      }
+    }
   }
 </style>
 <style lang="scss">
@@ -64,7 +88,7 @@ export default {
             }
           }
         }
-        border-bottom: 20px solid transparent;
+        border-bottom: 5px solid transparent;
         &:last-child{
           border-bottom:none;
         }
@@ -80,6 +104,9 @@ export default {
               color: $black_color;
             }
           }
+        }
+        .el-collapse-item__content{
+          padding-bottom: 0;
         }
         .el-collapse-item__wrap{
           background-color:transparent;

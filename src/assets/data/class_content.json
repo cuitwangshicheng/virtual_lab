@@ -14,23 +14,48 @@
   }],
   "12": [{
     "name": "实训背景介绍",
-    "list": [{
-      "type": "text",
-      "content": ""
+    "subList": [{
+      "name": "整形修剪技术的目标",
+      "list": [{
+        "type": "text",
+        "content": "<p style='color:#fff;font-size:20px;line-height:26px;'>培养合理的树体结构，扩大树冠有效面积，使幼树迅速成型，早结丰产；平衡营养生长与生殖长，促进盛产期连年丰产稳产；调节枝量与密度，使树体通风透光，减少病虫危害，增进果实品质：控制叶、果比例，使树体健壮，延长树体寿命。</p><img src='./static/img/classes/整形修剪目标1.png' alt='整形修剪目标' style='width:400px;height:280px;' /><img src='./static/img/classes/整形修剪目标2.png' alt='整形修剪目标' style='width:400px;height:280px;' />"
+      }]
+    }, {
+      "name": "整形修剪技术的思路",
+      "list": [{
+        "type": "text",
+        "content": "<p style='color:#fff;font-size:20px;line-height:26px;'>①根据猕猴桃的生长周期采取适宜的整形修剪措施和修剪重点。如：在生长季节前期，及时抹除或削去过多的萌芽或不在预留枝条位置上的芽；初果期要求持续扩大树冠，完善树体主侧蔓骨架建造，运用重短切、基部刻芽等技术措施，诱发健壮枝蔓，着力培养结果母枝蔓。②根据猕猴桃生长季节采取合理的整形修剪措施。如：冬季进行短截和回缩；夏季进行疏蕾、疏花、疏果、抹芽、摘心等。</p><div style='width:100%;display:flex;'><div><img src='./static/img/classes/整形修剪思路1.png' alt='整形修剪思路' style='width:400px;height:280px;' /><div style='width:100%;text-align:center;'>（梳稍）</div></div><div><img src='./static/img/classes/整形修剪思路2.png' alt='整形修剪思路' style='width:400px;height:280px;' /><div style='width:100%;text-align:center;'>（摘心）</div></div></div>"
+      }]
+    }, {
+      "name": "整形修剪技术的原则",
+      "list": [{
+        "type": "text",
+        "content": "<p style='color:#fff;font-size:20px;line-height:26px;'>采取最简单的修剪技术和措施，达到合理利用果园的光、热、气自然生态资源，增加树体营养合成，减少树体营养消耗和浪费，最终有利早结果、多结果、结好果。</p><img src='./static/img/classes/整形修剪原则1.png' alt='整形修剪原则' style='width:400px;height:280px;' /><img src='./static/img/classes/整形修剪原则2.png' alt='整形修剪原则' style='width:400px;height:280px;' />"
+      }]
     }]
   }, {
-    "name": "整形修剪思路",
+    "name": "实训目标",
     "list": [{
       "type": "video",
       "url": []
-    }, {
-      "type": "test",
-      "list": []
+    }]
+  }, {
+    "name": "实训框架",
+    "list": [{
+      "type": "video",
+      "url": []
     }]
   }],
   "21": [{
     "name": "树体结构",
-    "list": []
+    "list": [{
+      "type": "view3d",
+      "preName": "S2_SC_XL_TreeRotation_",
+      "start": 10014,
+      "end": 10104,
+      "extName": "png",
+      "pathUrl": "./static/img/classes/树体结构/"
+    }]
   }, {
     "name": "生物学特征结果习性",
     "list": [{

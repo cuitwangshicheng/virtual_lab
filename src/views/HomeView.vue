@@ -24,8 +24,12 @@
       </div>
       <!--中间区域-->
       <div class="center-panel">
-        <video-class style="height:calc(100% - 80px);" title="教学视频" type="1" v-if="currentClassInfo && currentClassInfo.type==='video'" :url="currentClassVideo"></video-class>
-        <test-card style="height:calc(100% - 80px);" v-if="currentClassInfo && currentClassInfo.type==='test'" :type="currentClassInfo.testInfo.type" :testInfo="currentClassInfo.testInfo"></test-card>
+        <div style="height:calc(100% - 80px);width:100%;">
+          <video-class title="教学视频" type="1" v-if="currentClassInfo && currentClassInfo.type==='video'" :url="currentClassVideo"></video-class>
+          <test-card v-if="currentClassInfo && currentClassInfo.type==='test'" :type="currentClassInfo.testInfo.type" :testInfo="currentClassInfo.testInfo"></test-card>
+          <text-comp v-if="currentClassInfo && currentClassInfo.type==='text'" :content="currentClassInfo.content"></text-comp>
+          <viewer3-d v-if="currentClassInfo && currentClassInfo.type==='view3d'" :path-url="currentClassInfo.pathUrl" :start="currentClassInfo.start" :end="currentClassInfo.end" :extName="currentClassInfo.extName" :preName="currentClassInfo.preName"></viewer3-d>
+        </div>
       </div>
       <!--右侧区域-->
       <div class="right-panel">
@@ -47,6 +51,8 @@ import DetailInfo from '@/components/business/DetailInfo.vue'
 import VideoClass from '@/components/business/VideoClass.vue'
 import TestCard from '@/components/business/TestCard.vue'
 import GradientButton from '@/components/basic/GradientButton.vue'
+import TextComp from '@/components/business/Text.vue'
+import Viewer3D from '@/components/business/Viewer-3D.vue'
 
 import ClassContent from '@/assets/data/class_content.json'
 
@@ -55,11 +61,13 @@ export default {
   components: {
     HeaderComp,
     BasicNav,
+    TextComp,
     DetailInfo,
     BasicCollapse,
     VideoClass,
     GradientButton,
-    TestCard
+    TestCard,
+    Viewer3D
   },
   data () {
     return {
