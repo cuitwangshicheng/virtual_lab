@@ -60,6 +60,9 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+    left: 0;
+    top: 0;
+    z-index: 9;
     &.shade{
       background-color: rgba(0,0,0,.2);
     }

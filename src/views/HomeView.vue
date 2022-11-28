@@ -18,8 +18,8 @@
           <basic-collapse style="width:80%;" :list="currentClass" @click="checkClass"></basic-collapse>
         </div>
         <div class="left-bottom-panel">
-          <div class="title">{{leftBottomInfo.title}}</div>
-          <detail-info :type="2" :list="leftBottomInfo.list"></detail-info>
+          <!-- <div class="title">{{leftBottomInfo.title}}</div>
+          <detail-info :type="2" :list="leftBottomInfo.list"></detail-info> -->
         </div>
       </div>
       <!--中间区域-->
@@ -29,8 +29,10 @@
           <test-card v-if="currentClassInfo && currentClassInfo.type==='test'" :type="currentClassInfo.testInfo.type" :testInfo="currentClassInfo.testInfo"></test-card>
           <text-comp v-if="currentClassInfo && currentClassInfo.type==='text'" :content="currentClassInfo.content"></text-comp>
           <viewer3-d v-if="currentClassInfo && currentClassInfo.type==='view3d'" :path-url="currentClassInfo.pathUrl" :start="currentClassInfo.start" :end="currentClassInfo.end" :extName="currentClassInfo.extName" :preName="currentClassInfo.preName"></viewer3-d>
-          <image-marker v-if="currentClassInfo && currentClassInfo.type==='image-marker'" :url="currentClassInfo.img" :circle-postion="currentClassInfo.position"></image-marker>
+          <image-marker v-if="currentClassInfo && currentClassInfo.type==='image-marker'" :url="currentClassInfo.img" :marker-list="currentClassInfo.markerList" @reduce-score="reduceScore" @next-step="nextStep"></image-marker>
           <images-view v-if="currentClassInfo && currentClassInfo.type==='images-array'" :list="currentClassInfo.list" :title="currentClassInfo.name"></images-view>
+          <image-marker1 v-if="currentClassInfo && currentClassInfo.type==='image-marker-1'" :url="currentClassInfo.img" :marker-list="currentClassInfo.markerList"></image-marker1>
+          <option-image v-if="currentClassInfo && currentClassInfo.type==='option-image'" :list="currentClassInfo.list"></option-image>
         </div>
       </div>
       <!--右侧区域-->
@@ -49,7 +51,7 @@
 import HeaderComp from '@/components/business/Header.vue'
 import BasicNav from '@/components/basic/Nav.vue'
 import BasicCollapse from '@/components/basic/Collapse'
-import DetailInfo from '@/components/business/DetailInfo.vue'
+// import DetailInfo from '@/components/business/DetailInfo.vue'
 import VideoClass from '@/components/business/VideoClass.vue'
 import TestCard from '@/components/business/TestCard.vue'
 import GradientButton from '@/components/basic/GradientButton.vue'
@@ -57,6 +59,8 @@ import TextComp from '@/components/business/Text.vue'
 import Viewer3D from '@/components/business/Viewer-3D.vue'
 import ImageMarker from '@/components/business/ImageMarker.vue'
 import ImagesView from '@/components/business/ImagesView.vue'
+import ImageMarker1 from '@/components/business/ImageMarker1.vue'
+import OptionImage from '@/components/business/OptionImage.vue'
 
 import ClassContent from '@/assets/data/class_content.json'
 
@@ -66,14 +70,16 @@ export default {
     HeaderComp,
     BasicNav,
     TextComp,
-    DetailInfo,
+    // DetailInfo,
     BasicCollapse,
     VideoClass,
     GradientButton,
     TestCard,
     Viewer3D,
     ImageMarker,
-    ImagesView
+    ImagesView,
+    ImageMarker1,
+    OptionImage
   },
   data () {
     return {
@@ -128,6 +134,10 @@ export default {
     }
   },
   methods: {
+    // 扣分
+    reduceScore (score) {
+      console.log(this.currentClassInfo)
+    },
     // 上一步
     preStep () {
       if (this.classList) {
@@ -148,7 +158,6 @@ export default {
     },
     // 选择课程
     checkClass (list) {
-      console.log(list)
       this.classList = list
       if (list instanceof Array && list.length > 0) {
         this.currentClassInfo = list[this.currentClassIndex]

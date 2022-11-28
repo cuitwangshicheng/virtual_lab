@@ -42,5 +42,10 @@
     "sass-loader": "^12.0.0",
     "unplugin-auto-import": "^0.11.4",
     "unplugin-vue-components": "^0.22.9"
+  },
+  "eslintConfig": {
+    "rules": {
+      "vue/require-v-for-key": "off"
+    }
   }
 }

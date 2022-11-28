@@ -58,23 +58,37 @@
     }, {
       "type": "image-marker",
       "img": "./static/img/classes/树体结构图片标记/shuru1.png",
-      "answer": "主干",
-      "position": ["48%", "70%"]
+      "markerList": [{
+        "answer": "主干",
+        "position": ["48%", "70%"]
+      }, {
+        "answer": "主蔓",
+        "position": ["48%", "calc(100px + 30%)"]
+      }]
     }, {
       "type": "image-marker",
       "img": "./static/img/classes/树体结构图片标记/shuru2.png",
-      "answer": "母蔓座",
-      "position": ["56%", "calc(100px + 45%)"]
+      "markerList": [{
+        "answer": "母蔓座",
+        "position": ["56%", "calc(100px + 45%)"]
+      }]
     }, {
       "type": "image-marker",
       "img": "./static/img/classes/树体结构图片标记/shuru3.png",
-      "answer": "结果枝",
-      "position": ["58%", "calc(100px + 3%)"]
+      "markerList": [{
+        "answer": "结果枝",
+        "position": ["58%", "calc(100px + 3%)"]
+      }, {
+        "answer": "营养枝",
+        "position": ["32%", "calc(100px + 38%)"]
+      }] 
     }, {
       "type": "image-marker",
       "img": "./static/img/classes/树体结构图片标记/shuru4.png",
-      "answer": "营养枝",
-      "position": ["37%", "calc(100px + 19%)"]
+      "markerList": [{
+        "answer": "饱满芽",
+        "position": ["37%", "calc(100px + 19%)"]
+      }]
     }, {
       "type": "images-array",
       "name": "图片集合",
@@ -114,5 +128,55 @@
       "type": "video",
       "url": []
     }]
+  }],
+  "22": [{
+    "name": "短截",
+    "list": [{
+      "type": "image-marker-1",
+      "img": "./static/img/classes/冬季修剪方法/短截/0.png",
+      "markerList": [{
+        "name": "轻短截",
+        "nameLocation": ["calc(60% - 80px)", "2%"],
+        "position": ["60%", "2%"],
+        "description": "短截是剪切一年生枝条的1/4~1/6。良好的一年生营养枝一般是在变细变弯处剪切。"
+      }, {
+        "name": "中短截",
+        "nameLocation": ["calc(50% - 80px)", "20%"],
+        "position": ["50%", "20%"],
+        "description": "中短截是剪切一年生枝条的1/3~1/2。"
+      }, {
+        "name": "重短截",
+        "nameLocation": ["calc(38% - 80px)", "45%"],
+        "position": ["38%", "45%"],
+        "description": "重短截是剪切一年生枝条的3/4~2/3。"
+      }, {
+        "name": "极重短截",
+        "nameLocation": ["calc(30% - 80px)", "62%"],
+        "position": ["30%", "62%"],
+        "description": "极重短截是在枝条基部留1~2个芽短切。"
+      }]
+    }]
+  }, {
+    "name": "梳枝",
+    "list": [{
+      "name": "梳枝动画",
+      "type": "option-image",
+      "list": [{
+        "tool": "./static/img/classes/冬季修剪方法/梳枝/tool.png",
+        "img": ["./static/img/classes/冬季修剪方法/梳枝/1.png", "./static/img/classes/冬季修剪方法/梳枝/1_s.png"]
+      }]
+    }]
+  }, {
+    "name": "回缩更新",
+    "list": []
+  }, {
+    "name": "长放",
+    "list": []
+  }, {
+    "name": "绑蔓",
+    "list": []
+  }, {
+    "name": "实践操作",
+    "list": []
   }]
 }

@@ -91,6 +91,7 @@ export default {
             background-color:$content_bg_color;
             margin-right:40px;
             margin-top: 40px;
+            cursor: pointer;
           }
         }
       }
