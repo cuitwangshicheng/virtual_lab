@@ -8,7 +8,7 @@ create-time:2022-11-27
     <div class="container">
       <!--title-->
       <div class="title" v-if="type===0">请输入发光点结构名称</div>
-      <img :src="url"/>
+      <img :class="'img_'+type" :src="url"/>
       <breath-circle v-if="type=== 0" :style="style" @click="clickMarker"></breath-circle>
       <!--输入框-->
       <el-form inline size="large" v-if="showInputFlag&&type===0" :style="inputStyle">
@@ -23,7 +23,7 @@ create-time:2022-11-27
       <template v-if="type===1">
         <template v-for="item in markerList" :key="item.name">
           <div :style="getStyle(item.nameLocation)">{{item.name}}</div>
-          <breath-circle :style="getStyle(item.position)" @click="clickMarker1(item)"></breath-circle>
+          <breath-circle :style="getStyle(item.position, 'breath')" @click="clickMarker1(item)"></breath-circle>
         </template>
       </template>
     </div>
@@ -96,12 +96,16 @@ export default {
     }
   },
   methods: {
-    getStyle (arr) {
-      console.log(arr)
+    getStyle (arr, type) {
       return {
         position: 'absolute',
         left: arr[0],
-        top: arr[1]
+        top: arr[1],
+        color: '#fff',
+        'font-size': '20px',
+        'font-weight': 'bold',
+        width: type === 'breath' ? '20px' : 'auto',
+        height: type === 'breath' ? '20px' : 'auto'
       }
     },
     clickMarker (e) {
@@ -172,6 +176,9 @@ export default {
       img{
         width:100%;
         height:calc(100% - 60px);
+        &.img_1{
+          height:100%;
+        }
       }
       .el-form{
         .el-button{

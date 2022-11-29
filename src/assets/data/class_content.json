@@ -136,23 +136,23 @@
       "img": "./static/img/classes/冬季修剪方法/短截/0.png",
       "markerList": [{
         "name": "轻短截",
-        "nameLocation": ["calc(60% - 80px)", "2%"],
-        "position": ["60%", "2%"],
+        "nameLocation": ["calc(60% - 70px)", "17%"],
+        "position": ["60%", "17%"],
         "description": "短截是剪切一年生枝条的1/4~1/6。良好的一年生营养枝一般是在变细变弯处剪切。"
       }, {
         "name": "中短截",
-        "nameLocation": ["calc(50% - 80px)", "20%"],
-        "position": ["50%", "20%"],
+        "nameLocation": ["calc(53% + 40px)", "25%"],
+        "position": ["53%", "25%"],
         "description": "中短截是剪切一年生枝条的1/3~1/2。"
       }, {
         "name": "重短截",
-        "nameLocation": ["calc(38% - 80px)", "45%"],
-        "position": ["38%", "45%"],
+        "nameLocation": ["calc(46% - 70px)", "39%"],
+        "position": ["46%", "39%"],
         "description": "重短截是剪切一年生枝条的3/4~2/3。"
       }, {
         "name": "极重短截",
-        "nameLocation": ["calc(30% - 80px)", "62%"],
-        "position": ["30%", "62%"],
+        "nameLocation": ["calc(42% - 90px)", "60%"],
+        "position": ["42%", "60%"],
         "description": "极重短截是在枝条基部留1~2个芽短切。"
       }]
     }]
