@@ -52,6 +52,14 @@ export default {
       }
     }
   },
+  mounted () {
+    if (this.$route.query.userId) {
+      this.$store.commit('setToken', this.$route.query.userId)
+    }
+    if (this.$route.query.type) {
+      this.$store.commit('setUserType', this.$route.query.type)
+    }
+  },
   methods: {
     goFindPass () {
       this.$emit('find-pass')

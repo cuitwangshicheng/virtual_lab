@@ -9,8 +9,8 @@ create-time:2022-11-15
       <div class="title-area">
         <Rect height="240px" width="calc(100% - 40px)" borderRadius="50px" class="sys-name">
           <div class="title-panel">
-            <div class="title">苍溪职业中学省级</div>
-            <div class="title">虚拟仿真实验室</div>
+            <div class="title">{{systemName[0]}}</div>
+            <div class="title">{{systemName[1]}}</div>
           </div>
         </Rect>
       </div>
@@ -58,7 +58,8 @@ export default {
       state: 'login-form', // 定义首页未登录时状态：login-form-显示登录框；register-form-显示注册框；find-form-找回密码框
       showAlert: false,
       alertText: [],
-      alertType: 'info'
+      alertType: 'info',
+      systemName: window.systemConfig.systemName
     }
   }
 }
