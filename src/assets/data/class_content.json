@@ -168,15 +168,52 @@
     }]
   }, {
     "name": "回缩更新",
-    "list": []
+    "list": [{
+      "type": "image-text",
+      "description": "回缩更新在冬季时进行，剪截多年生枝蔓的一部分，该项措施主要用于结果母蔓及结果枝组的更新。"
+    }]
   }, {
     "name": "长放",
-    "list": []
+    "list": [{
+      "type": "image-text",
+      "description": "长放是指一年生枝条放任生长，极轻或不短截，以增加中长枝，使枝条变软和减小减削度。直立枝、竞争枝、徒长枝不能直接长放，应先将其拉平后，再长放。长放枝多为中庸健壮的枝条。"
+    }]
   }, {
     "name": "绑蔓",
-    "list": []
+    "list": [{
+      "type": "image-text",
+      "description": "春季萌芽前必须把主蔓、侧蔓及结果母枝绑缚架上，注意枝蔓在架上分布均匀，做到不空不密。绑材多为塑料袋、稻草等，忌用铁丝以免伤枝蔓。绑缚要呈“8”字形。"
+    }]
   }, {
     "name": "实践操作",
-    "list": []
+    "type": "option-image-1",
+    "list": [{
+      "type": "option-image-1",
+      "list": [{
+        "name": "中短截",
+        "start-img": "",
+        "end-img": "",
+        "cut-img": "",
+        "tools": ["./static/img/classes/common/jiandao.png"]
+      }, {
+        "name": "梳背上枝",
+        "start-img": "",
+        "end-img": "",
+        "cut-img": "",
+        "tools": []
+      }, {
+        "name": "更新主干",
+        "start-img": "",
+        "end-img": "",
+        "cut-img": "",
+        "tools": []
+      }, {
+        "name": "梳背上枝",
+        "start-img": "",
+        "end-img": "",
+        "cut-img": "",
+        "tools": []
+      }]
+    }]
   }]
 }

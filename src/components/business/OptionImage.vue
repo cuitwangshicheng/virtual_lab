@@ -6,9 +6,9 @@ create-time:2022-11-28
 <template>
   <div class="Option-Image">
     <div class="container" @mousemove="moveTool" @mouseleave="moveOut" @click="startOption">
-      <img class="option-img" :src="url" />
+      <img class="option-img" v-if="url" :src="url" />
       <!--操作工具-->
-      <img class="tool-img" v-if="showToolFlag" :src="toolUrl" :style="toolStyle"/>
+      <img class="tool-img" v-if="(showToolFlag && toolUrl)" :src="toolUrl" :style="toolStyle"/>
     </div>
   </div>
 </template>
@@ -25,10 +25,10 @@ export default {
         if (this.$props.list.length > 0 && this.index < this.$props.list.length) {
           return this.completed ? this.$props.list[this.index].img[1] : this.$props.list[this.index].img[0]
         } else {
-          return ''
+          return null
         }
       } else {
-        return ''
+        return null
       }
     },
     toolUrl: function () {
@@ -36,10 +36,10 @@ export default {
         if (this.$props.list.length > 0 && this.index < this.$props.list.length) {
           return this.completed ? '' : this.$props.list[this.index].tool
         } else {
-          return ''
+          return null
         }
       } else {
-        return ''
+        return null
       }
     }
   },
@@ -52,6 +52,9 @@ export default {
     }
   },
   methods: {
+    setToolUrl (url) {
+      this.toolUrl = url
+    },
     startOption () {
       this.showToolFlag = false
       this.completed = true

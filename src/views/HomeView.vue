@@ -33,6 +33,8 @@
           <images-view v-if="currentClassInfo && currentClassInfo.type==='images-array'" :list="currentClassInfo.list" :title="currentClassInfo.name"></images-view>
           <image-marker1 v-if="currentClassInfo && currentClassInfo.type==='image-marker-1'" :url="currentClassInfo.img" :marker-list="currentClassInfo.markerList"></image-marker1>
           <option-image v-if="currentClassInfo && currentClassInfo.type==='option-image'" :list="currentClassInfo.list"></option-image>
+          <image-text v-if="currentClassInfo && currentClassInfo.type==='image-text'" :url="currentClassInfo.img" :desc="currentClassInfo.description"></image-text>
+          <option-image1 v-if="currentClassInfo && currentClassInfo.type==='option-image-1'" :list="currentClassInfo.list"></option-image1>
         </div>
       </div>
       <!--右侧区域-->
@@ -61,6 +63,8 @@ import ImageMarker from '@/components/business/ImageMarker.vue'
 import ImagesView from '@/components/business/ImagesView.vue'
 import ImageMarker1 from '@/components/business/ImageMarker1.vue'
 import OptionImage from '@/components/business/OptionImage.vue'
+import ImageText from '@/components/business/ImageText.vue'
+import OptionImage1 from '@/components/business/OptionImage1'
 
 import ClassContent from '@/assets/data/class_content.json'
 
@@ -79,7 +83,9 @@ export default {
     ImageMarker,
     ImagesView,
     ImageMarker1,
-    OptionImage
+    OptionImage,
+    ImageText,
+    OptionImage1
   },
   data () {
     return {
