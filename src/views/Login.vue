@@ -26,6 +26,10 @@ create-time:2022-11-15
       </transition>
     </div>
     <basic-alert show-shade :text="alertText" :type="alertType" v-if="showAlert" @ok="showAlert=false"></basic-alert>
+    <!--全屏组件-->
+    <div class="full-screen">
+      <full-screen></full-screen>
+    </div>
   </div>
 </template>
 
@@ -36,6 +40,7 @@ import RegisterForm from '@/components/business/RegisterForm.vue'
 import FindForm from '@/components/business/FindPass.vue'
 import MainMenu from '@/components/business/MainMenu.vue'
 import BasicAlert from '@/components/basic/Alert.vue'
+import FullScreen from '@/components/basic/FullScreen.vue'
 import mainMenu from '@/assets/data/main_menu.json'
 export default {
   name: 'login-page',
@@ -45,7 +50,8 @@ export default {
     RegisterForm,
     FindForm,
     BasicAlert,
-    MainMenu
+    MainMenu,
+    FullScreen
   },
   computed: {
     isLogin: function () {
@@ -122,6 +128,16 @@ export default {
         display: flex;
         justify-content: space-between;
       }
+    }
+    .full-screen{
+      position: absolute;
+      z-index: 9;
+      top: 20px;
+      right:20px;
+      width: 40px;
+      height: 40px;
+      background-color:rgba(0,0,0,.2);
+      border-radius:20px;
     }
   }
 </style>

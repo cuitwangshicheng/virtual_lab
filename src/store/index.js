@@ -4,7 +4,8 @@ export default createStore({
   state: {
     token: sessionStorage.getItem('token'),
     userType: sessionStorage.getItem('userType'),
-    currentMenu: sessionStorage.getItem('current_menu') ? JSON.parse(sessionStorage.getItem('current_menu')) : null
+    currentMenu: sessionStorage.getItem('current_menu') ? JSON.parse(sessionStorage.getItem('current_menu')) : null,
+    fullScreenState: false
   },
   getters: {
     getUserType: state => {
@@ -15,6 +16,9 @@ export default createStore({
     },
     getCurrentMenu: state => {
       return state.currentMenu
+    },
+    getFullscreenState: state => {
+      return state.fullScreenState
     }
   },
   mutations: {
@@ -29,6 +33,9 @@ export default createStore({
     setToken (state, v) {
       state.token = v
       sessionStorage.setItem('token', v)
+    },
+    setFullscreenState (state, v) {
+      state.fullScreenState = v
     }
   },
   actions: {
