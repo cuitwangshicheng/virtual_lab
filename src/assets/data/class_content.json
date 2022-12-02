@@ -191,10 +191,14 @@
       "type": "option-image-1",
       "list": [{
         "name": "中短截",
-        "start-img": "",
-        "end-img": "",
-        "cut-img": "",
-        "tools": ["./static/img/classes/common/jiandao.png"]
+        "start-img": "./static/img/classes/冬季修剪方法/实践操作/1.png",
+        "end-img": "./static/img/classes/冬季修剪方法/实践操作/1.png",
+        "cut-img": "./static/img/classes/冬季修剪方法/实践操作/1_cut.png",
+        "cut-style": ["245px", "108px"],
+        "cut-animation": [["50%", "10%"], ["50%", "60%"]],
+        "animation-time": 500,
+        "tools": ["./static/img/classes/common/jiandao.png", "./static/img/classes/common/tool0.png"],
+        "true-tool": 0
       }, {
         "name": "梳背上枝",
         "start-img": "",

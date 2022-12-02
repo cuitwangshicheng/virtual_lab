@@ -11,7 +11,7 @@ create-time:2022-12-02
     <div class="tool-list">
       <div class="list-container">
         <div v-for="item in pageSize" class="tool-item" :key="item">
-          <img v-if="list.length > 0 && list[(currentPage - 1) * pageSize + item - 1]" :src="list[(currentPage - 1) * pageSize + item - 1]" @click="selectTool(list[(currentPage - 1) * pageSize + item - 1])" />
+          <img v-if="list.length > 0 && list[(currentPage - 1) * pageSize + item - 1]" :src="list[(currentPage - 1) * pageSize + item - 1]" @click="selectTool(list[(currentPage - 1) * pageSize + item - 1], (currentPage - 1) * pageSize + item - 1)" />
         </div>
       </div>
     </div>
@@ -39,8 +39,8 @@ export default {
     }
   },
   methods: {
-    selectTool (url) {
-      this.$emit('select-tool', url)
+    selectTool (url, index) {
+      this.$emit('select-tool', url, index)
     }
   }
 }
